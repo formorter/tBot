@@ -3,4 +3,6 @@ chardet==4.0.0
 idna==2.10
 pyTelegramBotAPI==3.8.1
 requests==2.25.1
+style==1.1.0
+update==0.0.1
 urllib3==1.26.6
