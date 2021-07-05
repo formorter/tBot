@@ -1,5 +1,7 @@
 import telebot
 
+import logger
+
 TOKEN = '1782289333:AAF66r8nfRumURI9O1Dvv_mLc5rBh_4OZh0'
 bot = telebot.TeleBot(TOKEN)
 
@@ -16,5 +18,4 @@ def get_text_messages(message):
         bot.send_message(message.from_user.id, 'Ку')
     else:
         bot.send_message(message.from_user.id, 'Не понимаю, что это значит.')
-
 bot.polling(none_stop=True)
