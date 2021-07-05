@@ -24,9 +24,9 @@ def bot_message(message):
 
     if message.text == 'Спотифай':
         markup = types.ReplyKeyboardMarkup(resize_keyboard = True)
-        item1 = types.KeyboardButton('Плейлист')
         markup.add(item1)
-
+        item1 = types.KeyboardButton('Плейлист')
+        if message.text == 'Плейлист'
         bot.send_message(message.chat.id, 'https://open.spotify.com/playlist/5BQemH4tSKWnOeUjOGGCJW', reply_markup = markup)
 
         
