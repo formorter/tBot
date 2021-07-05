@@ -14,5 +14,4 @@ class BotLogger:
 	def main(self):
 		self.logger.info(f'Бот запущен, приятного пользования')
 
-log = BotLogger()
-log.main()
+

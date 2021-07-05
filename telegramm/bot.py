@@ -1,23 +1,34 @@
-import telebot
-
+import telebot 
+from telebot import types
 from botlogger import BotLogger
 
-TOKEN = '1742555924:AAGRqx3iu9TKqVSA82CGuzpnYQ2oA2Ln4Ws'
+TOKEN = '1782289333:AAF66r8nfRumURI9O1Dvv_mLc5rBh_4OZh0'
 bot = telebot.TeleBot(TOKEN)
 
-logger = BotLogger()
-@bot.message_handler(commands=['start'])
-def send_welcome(message):
-    bot.send_message(message.from_user.id, f'Я бот. Приятно познакомиться, {message.from_user.first_name}')
-@bot.message_handler(commands=['help'])
-def send_welcome(message):
-    bot.send_message(message.from_user.id, f'Помощи пока нет.')
+log = BotLogger()
+log.main()
+@bot.message_handler(commands=['start', 'help'])
+def start(message):
+    markup = types.ReplyKeyboardMarkup(resize_keyboard = True)
+
+    item1 = types.KeyboardButton('Спотифай')
+
+    markup.add(item1)
+
+    bot.send_message(message.chat.id, 'Привет, {0.first_name}!'.format(message.from_user), reply_markup = markup)
 
 @bot.message_handler(content_types=['text'])
-def get_text_messages(message):
-    if message.text.lower() == 'привет':
-        bot.send_message(message.from_user.id, 'Ку')
-    else:
-        bot.send_message(message.from_user.id, 'Не понимаю')
+
+def bot_message(message):
+
+
+    if message.text == 'Спотифай':
+        markup = types.ReplyKeyboardMarkup(resize_keyboard = True)
+        item1 = types.KeyboardButton('Плейлист')
+        markup.add(item1)
+
+        bot.send_message(message.chat.id, 'https://open.spotify.com/playlist/5BQemH4tSKWnOeUjOGGCJW', reply_markup = markup)
+
+        
 
 bot.polling(none_stop=True)
