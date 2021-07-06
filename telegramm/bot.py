@@ -3,7 +3,7 @@ from telebot import types
 from telegramm.Logger import BotLogger
 from telegramm.Spoti import spotify
 
-TOKEN = '1742555924:AAGRqx3iu9TKqVSA82CGuzpnYQ2oA2Ln4Ws'
+TOKEN = '1782289333:AAF66r8nfRumURI9O1Dvv_mLc5rBh_4OZh0'
 bot = telebot.TeleBot(TOKEN)
 
 start_logger = BotLogger()
