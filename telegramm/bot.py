@@ -49,6 +49,13 @@ def geolocation(message):
 # ----------------------[Конец блока]--------------------------------------------
 
 
+@bot.message_handler(commands=['history'])
+def etot_bot_poyavilsya_v_resultyaye_pyanki(message):
+    bot.send_message(message.chat.id,'РЫГАЮ))))я не за.) А ЕЩЁ!!! всё | Этот день мы вспомним через много лет! Паша поправляйся |, мы знаеи где ты находишься!!1 ??? Я ваню какашки а ещё тут играет нирвана )))))))))))')
+
+
+
+bot.polling(none_stop=True)
 @bot.message_handler(content_types=['location'])
 def location(message):
     if message.location is not None:
@@ -68,4 +75,3 @@ def bot_message(message):
                          reply_markup=markup)
 
 
-bot.polling(none_stop=True)
