@@ -17,7 +17,7 @@ def send_welcome(message):
 
 @bot.message_handler(commands=['help'])
 def send_help(message):
-	help_txt = open('help-commands.txt', encoding='utf-8')help_txt = open('help-commands.txt', encoding='utf-8')
+	help_txt = open('help-commands.txt', encoding='utf-8')
    bot.reply_to(message, help_txt.read())
     
 
