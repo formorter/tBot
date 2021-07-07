@@ -31,6 +31,30 @@ def spotify(message):
                      reply_markup=markup)
 
 
+# ----------------------[Конец блока]--------------------------------------------
+
+
+# ----------------------[Блок с локацией]----------------------------------------
+
+
+@bot.message_handler(commands=['locate'])
+def geolocation(message):
+    markup = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)
+    location_button = types.KeyboardButton(text="Показать местоположение", request_location=True)
+    markup.add(location_button)
+    bot.send_message(message.chat.id, "Если ты хочешь показать мне где ты, то нажми на кнопку",
+                     reply_markup=markup)
+
+
+# ----------------------[Конец блока]--------------------------------------------
+
+
+@bot.message_handler(content_types=['location'])
+def location(message):
+    if message.location is not None:
+        print("latitude: %s; longitude: %s" % (message.location.latitude, message.location.longitude))
+
+
 @bot.message_handler(content_types=['text'])
 def bot_message(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -42,28 +66,6 @@ def bot_message(message):
     elif message.text == 'Плейлист':
         bot.send_message(message.chat.id, 'https://open.spotify.com/playlist/5BQemH4tSKWnOeUjOGGCJW',
                          reply_markup=markup)
-
-
-# ----------------------[Конец блока]--------------------------------------------
-
-
-# ----------------------[Блок с локацией]----------------------------------------
-@bot.message_handler(commands=['locate'])
-def geolocation(message):
-    markup = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)
-    location_button = types.KeyboardButton(text="Показать местоположение", request_location=True)
-    markup.add(location_button)
-    bot.send_message(message.chat.id, "Если ты хочешь показать мне где ты, то нажми на кнопку",
-                     reply_markup=markup)
-
-
-@bot.message_handler(content_types=['location'])
-def location(message):
-    if message.location is not None:
-        print("latitude: %s; longitude: %s" % (message.location.latitude, message.location.longitude))
-
-
-# ----------------------[Конец блока]--------------------------------------------
 
 
 bot.polling(none_stop=True)
