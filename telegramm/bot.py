@@ -21,6 +21,8 @@ def send_help(message):
     bot.reply_to(message, help_txt.read())
 
 
+        
+
 # ----------------------[Блок с музыкой]--------------------------------------------
 @bot.message_handler(commands=['music'])
 def spotify(message):
@@ -49,19 +51,6 @@ def geolocation(message):
 # ----------------------[Конец блока]--------------------------------------------
 
 
-@bot.message_handler(commands=['history'])
-def etot_bot_poyavilsya_v_resultyaye_pyanki(message):
-    bot.send_message(message.chat.id,'РЫГАЮ))))я не за.) А ЕЩЁ!!! всё | Этот день мы вспомним через много лет! Паша поправляйся |, мы знаеи где ты находишься!!1 ??? Я ваню какашки а ещё тут играет нирвана )))))))))))')
-
-
-
-bot.polling(none_stop=True)
-@bot.message_handler(content_types=['location'])
-def location(message):
-    if message.location is not None:
-        print("latitude: %s; longitude: %s" % (message.location.latitude, message.location.longitude))
-
-
 @bot.message_handler(content_types=['text'])
 def bot_message(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -73,5 +62,14 @@ def bot_message(message):
     elif message.text == 'Плейлист':
         bot.send_message(message.chat.id, 'https://open.spotify.com/playlist/5BQemH4tSKWnOeUjOGGCJW',
                          reply_markup=markup)
+
+
+bot.polling(none_stop=True)
+@bot.message_handler(content_types=['location'])
+def location(message):
+    if message.location is not None:
+        print("latitude: %s; longitude: %s" % (message.location.latitude, message.location.longitude))
+
+
 
 
