@@ -6,5 +6,5 @@ class BotLogger: 				# тупой логгер
     logger.setLevel('INFO')
     logging.basicConfig(level='INFO')
 
-    def main(self, message):
+    def logg(self, message):
         self.logger.info(f'{message}')

@@ -1,21 +1,34 @@
-import telebot
-from aiogram import Bot, Dispatcher, executor, types
-import logging
-from telebot import types
+from aiogram import Bot, Dispatcher, \
+                    executor, types
+
 from Logger import BotLogger
 import buttons as bt
+# from Spoti import spotify
 
-# from telegramm.Spoti import spotify
 TOKEN = "1782289333:AAF66r8nfRumURI9O1Dvv_mLc5rBh_4OZh0"
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
 
 start_logger = BotLogger()
-start_logger.main('Бот запущен, приятного пользования')
+start_logger.logg('Бот запущен, приятного пользования')
+
 
 @dp.message_handler(commands=['start'])
 async def hello(message: types.Message):
-    await bot.send_message(message.from_user.id, 'Привет\nЧто хочешь ?', reply_markup=bt.music_btn)
+    await bot.send_message(message.from_user.id, 'Привет, я AXIUS.\nЧтобы узнать, что я умею, пиши /help',)
+
+
+@dp.message_handler(commands=['help'])
+async def help(message: types.Message):
+    help_txt = open('help-commands.txt', encoding='utf-8')
+    await bot.send_message(message.from_user.id, help_txt.read())
+
+
+@dp.message_handler(commands=['music'])
+async def music(message: types.Message):
+    await bot.send_message(message.from_user.id, 'На какой платформе будем слушать?',
+                           reply_markup=bt.create_one_time_button('Spotify'))
+
 
 @dp.message_handler()
 async def bot_message(message: types.Message):
