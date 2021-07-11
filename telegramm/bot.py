@@ -10,18 +10,16 @@ bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
 
 start_logger = BotLogger()
-start_logger.logg('Бот запущен, приятного пользования')
+start_logger.info_logg('Бот запущен, приятного пользования')
 
 
-@dp.message_handler(commands=['start'])
+@dp.message_handler(commands=['start', 'help'])
 async def hello(message: types.Message):
-    await bot.send_message(message.from_user.id, 'Привет, я AXIUS.\nЧтобы узнать, что я умею, пиши /help',)
-
-
-@dp.message_handler(commands=['help'])
-async def help(message: types.Message):
-    help_txt = open('help-commands.txt', encoding='utf-8')
-    await bot.send_message(message.from_user.id, help_txt.read())
+    if message.text == '/start':
+        await bot.send_message(message.from_user.id, 'Привет, я AXIUS.\nЧтобы узнать, что я умею, пиши /help',)
+    else:
+        help_txt = open('help-commands.txt', encoding='utf-8')
+        await bot.send_message(message.from_user.id, help_txt.read(),)
 
 
 @dp.message_handler(commands=['music'])
