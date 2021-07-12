@@ -1,6 +1,6 @@
 from aiogram import types
 
-from telegramm import buttons as bt
+from buttons import buttons as bt
 from loader import dp
 
 
