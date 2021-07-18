@@ -6,3 +6,4 @@ from aiogram.dispatcher.filters.state import StatesGroup, State
 class MusicState(StatesGroup):
     choose_platform = State()
     get_back = State()
+    exit_menu = State()
