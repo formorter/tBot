@@ -5,6 +5,13 @@ from states import MusicState
 from buttons import buttons as bt
 from loader import dp
 
+
+@dp.message_handler(text="Выход", state=MusicState.get_back)
+async def stop_cast_playlist(message: types.Message, state: FSMContext):
+    await state.finish()
+    await message.answer(text="Вы успешно вышли")
+
+
 @dp.message_handler(state=MusicState.get_back)
 @dp.message_handler(commands=['music'])
 async def music(message: types.Message):
@@ -32,6 +39,8 @@ async def bot_message(message: types.Message, state: FSMContext):
         await message.answer("https://vk.com/music/album/-2000517727_11517727_acba018a8ba0af12f6",
                              reply_markup=exit_menu)
     await MusicState.get_back.set()  # установка состояния выхода в меню выбора(состояние 2)
+
+
 
 
 
