@@ -9,9 +9,10 @@ from utils.misc.throttling import rate_limit
 @dp.message_handler(text="Выход", state=MusicState.get_back)
 async def stop_cast_playlist(message: types.Message, state: FSMContext):
     await state.finish()
-    await message.answer(text="Вы успешно вышли")
+    await message.answer(text=f"Ты вышел \nДля просмотра доступных команд используй /help \nИли \"/\" в чат")
 
 
+@rate_limit(5)
 @dp.message_handler(state=MusicState.get_back)
 @dp.message_handler(commands=['music'])
 async def music(message: types.Message):

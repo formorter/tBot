@@ -35,7 +35,7 @@ class ThrottlingMiddleware(BaseMiddleware):
         msg = target.message if isinstance(target, types.CallbackQuery) else target
         delta = throttled.rate - throttled.delta
         if throttled.exceeded_count == 2:
-            await msg.reply("Перестань, я откужу твои пальцы, если ты не перестанешь")
+            await msg.reply("Перестань, я откушу твои пальцы, если ты не перестанешь")
             return
         elif throttled.exceeded_count == 3:
             await msg.reply(f"Я просил, но ты можешь поспамить ещё через {delta} секунд ")
