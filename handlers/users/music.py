@@ -12,9 +12,9 @@ async def stop_cast_playlist(message: types.Message, state: FSMContext):
     await message.answer(text=f"Ты вышел \nДля просмотра доступных команд используй /help \nИли \"/\" в чат")
 
 
-@rate_limit(5)
 @dp.message_handler(state=MusicState.get_back)
 @dp.message_handler(commands=['music'])
+@rate_limit(limit=5, key='music')
 async def music(message: types.Message):
     spotify = KeyboardButton("Spotify")
     vk = KeyboardButton("VK")
