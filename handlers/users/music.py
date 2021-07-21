@@ -3,6 +3,7 @@ from aiogram.dispatcher import FSMContext
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from states import MusicState
 from loader import dp
+from utils.misc.throttling import rate_limit
 
 
 @dp.message_handler(text="Выход", state=MusicState.get_back)
