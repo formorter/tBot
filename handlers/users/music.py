@@ -29,13 +29,24 @@ async def music(message: types.Message):
 # вместо текста или команды фильтром выступает параметр state,
 # определяющий в каком состоянии находится пользователь
 async def bot_message(message: types.Message):
+    spoti_plotniy_playlist = KeyboardButton('ПЛОТНЫЙ РЭП')
+    spoti_witch_house = KeyboardButton('ViVoDDn3#2')
+    spoti_playlists_markup = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).add(
+        spoti_plotniy_playlist).add(spoti_witch_house)
     get_back_button = KeyboardButton('Вернуться к выбору плейлиста')
     exit_button = KeyboardButton('Выход')
     exit_menu = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).add(
         get_back_button).add(exit_button)
     if message.text == 'Spotify':
-        await message.answer("https://open.spotify.com/playlist/5BQemH4tSKWnOeUjOGGCJW",
-                             reply_markup=exit_menu)
+        await message.answer("Вот все доступные плейлисты в спотифай",
+                            reply_markup=spoti_playlists_markup)
+
+        if message.text == 'ПЛОТНЫЙ РЭП':
+            await message.answer("https://open.spotify.com/playlist/5BQemH4tSKWnOeUjOGGCJW",
+                                 reply_markup=exit_menu)
+        if message.text == 'VivoDDn3#2':
+            await message.answer("https://open.spotify.com/playlist/2U9iYP0tAtDM8j5Zm3Eiv0?si=301482f1b4d54e85",
+                                 reply_markup=exit_menu)
     if message.text == 'VK':
         await message.answer("https://vk.com/music/album/-2000517727_11517727_acba018a8ba0af12f6",
                              reply_markup=exit_menu)
