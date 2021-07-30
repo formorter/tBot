@@ -41,11 +41,12 @@ async def music(message: types.Message):
 async def bot_message(message: types.Message):
     spoti_plotniy_playlist = KeyboardButton('ПЛОТНЫЙ РЭП')
     spoti_witch_house = KeyboardButton('ViVoDDn3#2')
-    vk_morgen_album = KeyboardButton('MORGENSHTERN - MILLION DOLLAR: HAPPINESS')
     spoti_playlists_markup = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).add(
         spoti_plotniy_playlist).add(spoti_witch_house)
+    vk_morgen_album = KeyboardButton('MORGENSHTERN - MILLION DOLLAR: HAPPINESS')
+    vk_bllie_album = KeyboardButton('Billie Eilish - Happier Than Ever')
     vk_playlists_markup = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True).add(
-        vk_morgen_album)
+        vk_morgen_album).add(vk_bllie_album)
     if message.text == 'Spotify':
         await message.answer("Вот все доступные плейлисты в спотифай",
                             reply_markup=spoti_playlists_markup)
@@ -64,9 +65,17 @@ async def choose_music(message: types.Message):
     if message.text == 'ПЛОТНЫЙ РЭП':
         await message.answer("https://open.spotify.com/playlist/5BQemH4tSKWnOeUjOGGCJW",
                              reply_markup=exit_menu)
-    if message.text == 'VivoDDn3#2':
+    if message.text == 'ViVoDDn3#2':
         await message.answer("https://open.spotify.com/playlist/2U9iYP0tAtDM8j5Zm3Eiv0?si=301482f1b4d54e85",
                              reply_markup=exit_menu)
     if message.text == 'MORGENSHTERN - MILLION DOLLAR: HAPPINESS':
+<<<<<<< Updated upstream
         await message.answer("https://vk.com/music/album/-2000517727_11517727_acba018a8ba0af12f6")
+=======
+        await message.answer("https://vk.com/music/album/-2000517727_11517727_acba018a8ba0af12f6",
+                             reply_markup=exit_menu)
+    if message.text == 'Billie Eilish - Happier Than Ever':
+        await message.answer("https://vk.com/music/album/-2000461283_12461283_f9fe73613d2a22d489",
+                             reply_markup=exit_menu)
+>>>>>>> Stashed changes
     await MusicState.get_back_menu.set()
