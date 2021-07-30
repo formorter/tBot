@@ -69,7 +69,6 @@ async def choose_music(message: types.Message):
         await message.answer("https://open.spotify.com/playlist/2U9iYP0tAtDM8j5Zm3Eiv0?si=301482f1b4d54e85",
                              reply_markup=exit_menu)
     if message.text == 'MORGENSHTERN - MILLION DOLLAR: HAPPINESS':
-        await message.answer("https://vk.com/music/album/-2000517727_11517727_acba018a8ba0af12f6")
         await message.answer("https://vk.com/music/album/-2000517727_11517727_acba018a8ba0af12f6",
                              reply_markup=exit_menu)
     if message.text == 'Billie Eilish - Happier Than Ever':
